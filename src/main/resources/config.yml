@@ -1,0 +1,34 @@
+####################################################
+#                  Author: Kenda                   #
+#               Plugin: TikControls                #
+#  github: https://github.com/KendaFR/TikControls  #
+####################################################
+
+#The name of your pseudonym tiktok.
+#Please note that you'll need your launch stream for the api to connect.
+#https://www.tiktok.com/@example
+username: example
+
+#Section events
+#The events section is editable, not mandatory.
+#You can use commands from other plugins
+#You can use the name of donator with %donator%
+#Here are a few examples
+events:
+  like:
+    commands:
+      - "title Kenda_ title Like from %donator%"
+  follow:
+    commands:
+      - "teleport Kenda_ 0 100 0"
+      - "give Kenda_ enderpearl 1"
+  gifts:
+    #This is id of gift
+    5655:
+      commands:
+        - "teleport Kenda_ 100 100 100"
+        - "gamemode creative Kenda_"
+    8963:
+      #Example of the command with the LuckPerms plugin
+      commands:
+        - "lp editor"

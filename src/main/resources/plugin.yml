@@ -1,0 +1,9 @@
+name: TikControls
+version: '${project.version}'
+main: fr.kenda.tikcontrols.TikControls
+api-version: '1.20'
+authors: [Kenda]
+description: Plugin allowing interactions in Minecraft based on TikTok events
+commands:
+  tikcontrols:
+    description: Show information about plugin
