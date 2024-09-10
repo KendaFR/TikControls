@@ -49,13 +49,20 @@ public class TikTokEventManager implements IManager {
         }
 
         if (!actionsFromGiftId.isEmpty()) {
-            api.onGift((liveClient, tikTokGiftEvent) -> actionsFromGiftId.get(tikTokGiftEvent.getGift().getId())
-                    .forEach(cmd ->
-                            Bukkit.getScheduler().runTask(TikControls.getInstance(), () ->
-                                    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), cmd.replace("%donator%", tikTokGiftEvent.getUser().getName()))
-                            )
-                    ));
+            api.onGift((liveClient, tikTokGiftEvent) -> {
+                List<String> commands = actionsFromGiftId.get(tikTokGiftEvent.getGift().getId());
+                if (commands != null) {
+                    commands.forEach(cmd ->
+                            Bukkit.getScheduler().runTask(TikControls.getInstance(), () -> {
+                                String command = cmd.replace("%donator%", tikTokGiftEvent.getUser().getName())
+                                        .replace("%amount%", String.valueOf(tikTokGiftEvent.getCombo()));
+                                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), command);
+                            })
+                    );
+                }
+            });
         }
+
 
         api.onConnected((liveClient, tikTokConnectedEvent) -> Bukkit.getConsoleSender().sendMessage(Messages.transformColor(TikControls.PREFIX + "&aConnected to " + username)));
         Bukkit.getConsoleSender().sendMessage(Messages.transformColor(TikControls.PREFIX + "&aConnection to " + username + "..."));
