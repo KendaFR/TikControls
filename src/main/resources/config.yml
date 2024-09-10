@@ -21,7 +21,7 @@ events:
   follow:
     commands:
       - "teleport Kenda_ 0 100 0"
-      - "give Kenda_ enderpearl 1"
+      - "give Kenda_ enderpearl %amount%"
   gifts:
     #This is id of gift
     5655:
